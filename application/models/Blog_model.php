@@ -18,6 +18,7 @@ class Blog_model extends CI_Model{
     return $query->result_array();
   }
 
+
   //一覧記事用(post_list)
   public function get_post_list(){
     $query = $this->db->query("

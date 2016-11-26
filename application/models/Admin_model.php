@@ -22,6 +22,7 @@ class Admin_model extends CI_Model{
     return $query->result_array();
   }
 
+
   //記事詳細用
   public function admin_get_post($post_id = FALSE){
     $query = $this->db->query("

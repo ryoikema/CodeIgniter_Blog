@@ -11,6 +11,7 @@ class Calender_model extends CI_Model{
       "next_prev_url" => base_url() . "calender/index"
     );
 
+
     // $this->pref = array(
     //   'table_open'             => '<table class="calender">',
 
