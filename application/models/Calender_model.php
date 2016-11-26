@@ -11,7 +11,6 @@ class Calender_model extends CI_Model{
       "next_prev_url" => base_url() . "calender/index"
     );
 
-
     // $this->pref = array(
     //   'table_open'             => '<table class="calender">',
 
@@ -54,22 +53,23 @@ class Calender_model extends CI_Model{
 
     foreach($query->result() as $row){
       //2016
-      //00-00
+      //00-00を00/00にしてやりたい
       //formatエラーが出ている
-      $cal_data[substr($row->post_date, 8,2)] = substr($row->post_date, 5,5);
+      $cal_data[substr($row->post_date, 8,2)] = site_url('calender/index/'.$year."/".$month."/".str_replace("-", "/",substr($row->post_date, 8,2)));
+      //$cal_data[substr($row->post_date, 8,2)] = substr($row->post_date, 5,5);
     }
     return $cal_data;
 }
   //これで各月の記事を取得
   //localhost/code_blog/calender/index/2016/10-24
-  public function get_post_calender($year, $month){
+  public function get_post_calender($year, $month, $day){
     $post_date = $this->input->get('post_date');
     $query = $this->db->query("
       SELECT *,
       date_format(post_date,'%Y-%m-%d') AS post_date
       FROM post
       WHERE post_date
-      LIKE '".$year."-".$month."%'
+      LIKE '".$year."-".$month."-".$day."%'
       ");
     return $query->result_array();
   }

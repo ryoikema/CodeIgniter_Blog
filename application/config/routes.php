@@ -56,7 +56,7 @@ $route['contact']      = 'contact';
 
 
 /*カレンダー*/
-$route['calender']     = 'calender';
+$route['calender(:any)']     = 'calender/$1';
 
 
 /*管理画面*/
