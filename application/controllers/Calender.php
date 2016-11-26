@@ -5,10 +5,6 @@ class Calender extends CI_Controller{
     parent::__construct();
     $this->load->model('Blog_model');
     $this->load->model('Calender_model');
-    //development の場合 プロファイラを有効に
-    if(ENVIRONMENT === 'development'){
-      $this->output->enable_profiler();
-    }
   }
 /*************************************************
  カレンダー
@@ -18,7 +14,6 @@ class Calender extends CI_Controller{
     $data['posts_archive'] = $this->Blog_model->get_post_archive_sidebar();
     $data['category']      = $this->Blog_model->get_category();
     $data['check_cat']     = $this->Blog_model->get_show_check_category();
-
     $data['calender']      = $this->Calender_model->generates($year,$month,$day);
     $data['calender_post'] = $this->Calender_model->get_post_calender($year,$month,$day);
 
