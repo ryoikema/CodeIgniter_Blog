@@ -6,9 +6,9 @@ class Admin extends CI_Controller{
     $this->load->model('Admin_model');
 
     //development の場合 プロファイラを有効に
-    if (ENVIRONMENT === 'development') {
-        $this->output->enable_profiler();
-    }
+    // if (ENVIRONMENT === 'development') {
+    //     $this->output->enable_profiler();
+    // }
 
   }
 /*************************************************

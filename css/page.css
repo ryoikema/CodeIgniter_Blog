@@ -36,8 +36,12 @@
 
 .contact_form .input{
   width: 100%;
+  padding: 6px;
 }
 .contact_form .submit_btn{
   text-align: center;
   width: 30%;
+}
+.form_error{
+  color: #e50000;
 }

@@ -1,12 +1,11 @@
   <div class="l-content">
     <div class="post">
 
-    <h3>お問い合わせ 内容確認</h3>
-    <p>お問い合わせ内容はこちらでよろしいですか？</p>
-    <p>よろしければ「送信する」ボタンを押してください。</p>
+      <h3>お問い合わせ 内容確認</h3>
+      <p>お問い合わせ内容はこちらでよろしいですか？</p>
+      <p>よろしければ「送信する」ボタンを押してください。</p>
 
-      <?php echo validation_errors() ?>
-      <?php echo form_open('contact/thank') ?>
+      <?php echo form_open('contact/confirm') ?>
 
       <table class="contact_form">
         <tbody>
@@ -24,8 +23,11 @@
           </tr>
           <tr>
             <td class="submit_btn" colspan="2">
+              <?php echo form_hidden('name', set_value('name')); ?>
+              <?php echo form_hidden('email', set_value('email')); ?>
+              <?php echo form_hidden('text', set_value('text')); ?>
+              <input type="submit" name="return_edit" value="戻る">
               <input type="submit" name="submit" value="送信する">
-              <input type="submit" name="return_edit" value="内容を修正" onclick="history.back()">
             </td>
           </tr>
         </tbody>
