@@ -2,7 +2,7 @@
   <div class="post">
   <h2>月別記事</h2>
     <ul>
-    <?php foreach($posts_month as $post): ?>
+    <?php foreach($records as $post): ?>
       <li>
         <span class="post_date"><?php echo $post['post_date'] ?></span>
         <!--紐づいているカテゴリを表示-->
@@ -18,5 +18,6 @@
       </li>
     <?php endforeach;?>
     </ul>
+    <div class="pager"><?php echo $this->pagination->create_links(); ?></div>
   </div>
 </div><!--/l-content-->

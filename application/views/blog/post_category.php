@@ -18,6 +18,6 @@
       </li>
     <?php endforeach;?>
     </ul>
-
+    <div class="pager"><?php echo $this->pagination->create_links(); ?></div>
   </div>
 </div><!--/l-content-->

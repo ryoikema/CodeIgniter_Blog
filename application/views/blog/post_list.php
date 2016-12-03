@@ -1,6 +1,6 @@
 <div class="l-content">
   <div class="post">
-  <h2>記事一覧(全記事数<?php echo count($posts)?>件)</h2>
+  <h2>記事一覧(全記事数<?php //echo count($posts) ?>件)</h2>
     <ul>
     <?php foreach($posts as $post): ?>
       <li>
@@ -18,5 +18,6 @@
       </li>
     <?php endforeach;?>
     </ul>
+    <div class="pager"><?php echo $this->pagination->create_links(); ?></div>
   </div>
 </div><!--/l-content-->
