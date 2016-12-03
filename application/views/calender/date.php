@@ -1,7 +1,7 @@
   <div class="l-content">
     <div class="post">
       <ul>
-      <?php foreach($calender_post as $post): ?>
+      <?php foreach($calender_post_date as $post): ?>
         <li>
           <span class="post_date"><?php echo $post['post_date'] ?></span>
           <!--紐づいているカテゴリを表示-->
