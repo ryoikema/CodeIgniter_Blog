@@ -1,88 +1,44 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-/*
-| -------------------------------------------------------------------------
-| URI ROUTING
-| -------------------------------------------------------------------------
-| This file lets you re-map URI requests to specific controller functions.
-|
-| Typically there is a one-to-one relationship between a URL string
-| and its corresponding controller class/method. The segments in a
-| URL normally follow this pattern:
-|
-|	example.com/class/method/id/
-|
-| In some instances, however, you may want to remap this relationship
-| so that a different class/function is called than the one
-| corresponding to the URL.
-|
-| Please see the user guide for complete details:
-|
-|	https://codeigniter.com/user_guide/general/routing.html
-|
-| -------------------------------------------------------------------------
-| RESERVED ROUTES
-| -------------------------------------------------------------------------
-|
-| There are three reserved routes:
-|
-|	$route['default_controller'] = 'welcome';
-|
-| This route indicates which controller class should be loaded if the
-| URI contains no data. In the above example, the "welcome" class
-| would be loaded.
-|
-|	$route['404_override'] = 'errors/page_missing';
-|
-| This route will tell the Router which controller/method to use if those
-| provided in the URL cannot be matched to a valid route.
-|
-|	$route['translate_uri_dashes'] = FALSE;
-|
-| This is not exactly a route, but allows you to automatically route
-| controller and method names that contain dashes. '-' isn't a valid
-| class or method name character, so it requires translation.
-| When you set this option to TRUE, it will replace ALL dashes with
-| underscores in the controller and method URI segments.
-|
-| Examples:	my-controller/index	-> my_controller/index
-|		my-controller/my-method	-> my_controller/my_method
-*/
-
 /*お問い合わせ*/
-$route['contact/confirm']      = 'contact/confirm';
-$route['contact']      = 'contact';
-
+$route['contact/confirm'] = 'contact/confirm';
+$route['contact']         = 'contact';
 
 /*カレンダー*/
-$route['calender']     = 'calender';
-
+$route['calender(:any)']     = 'calender/$1';
 
 /*管理画面*/
+  //ログイン/ログアウト/会員機能
+  $route['member/members']          = 'member/members';
+  $route['member/login_validation'] = 'member/login_validation';
+  $route['member/login']            = 'member/login';
+  $route['member']                  = 'member';
   //category
-$route['admin/post_category/(:any)'] = 'admin/post_category/$1';
-$route['admin/category/admin_category_edit'] = "admin/category/admin_category_edit";
-$route['admin/category']                     = "admin/category";
+  $route['admin/post_category/(:any)']         = 'admin/post_category/$1';
+  $route['admin/category/admin_category_edit'] = "admin/category/admin_category_edit";
+  $route['admin/category']                     = "admin/category";
   //post
-$route['admin/admin_post_delete'] = 'admin/admin_post_delete';
-$route['admin/admin_post_edit']   = 'admin/admin_post_edit';
-$route['admin/admin_post_create'] = 'admin/admin_post_create';
-$route['admin/post_detail']       = 'admin/post_detail';
-$route['admin']                   = "admin";
-
+  $route['admin/admin_post_delete'] = 'admin/admin_post_delete';
+  $route['admin/admin_post_edit']   = 'admin/admin_post_edit';
+  $route['admin/admin_post_create'] = 'admin/admin_post_create';
+  $route['admin/post_detail']       = 'admin/post_detail';
+  $route['admin']                   = "admin";
 
 /*一般画面*/
+  //ギャラリー
+  $route['gallery']     = 'gallery';
+
   //category
   $route['blog/post_category/(:any)'] = 'blog/post_category/$1';
-  $route['blog/post_category'] = 'blog/post_category';
+  $route['blog/post_category']        = 'blog/post_category';
 
   //post
-$route['blog/post_archive/(:any)']     = 'blog/post_archive/$1';
-$route['blog/post_archive']     = 'blog/post_archive';
-$route['blog/post_detail']   = 'blog/post_detail';
-$route['blog/post_list']     = 'blog/post_list';
-$route['default_controller'] = 'blog';
+$route['blog/post_archive/(:any)'] = 'blog/post_archive/$1';
+$route['blog/post_archive']        = 'blog/post_archive';
+$route['blog/post_detail']         = 'blog/post_detail';
+$route['blog/post_list']           = 'blog/post_list';
+$route['default_controller']       = 'blog';
 
 $route['404_override']         = '';
 $route['translate_uri_dashes'] = FALSE;
