@@ -102,3 +102,14 @@ img {
 
 li {
   list-style: none; }
+
+.clearfix:after,
+div:after,
+dl:after,
+ul:after {
+  clear: both;
+}
+.clearfix:before, div:before, dl:before, ul:before, .clearfix:after, div:after, dl:after, ul:after{
+  content: " ";
+  display: table;
+}

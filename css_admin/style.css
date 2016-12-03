@@ -16,6 +16,14 @@ table td{
   border: 1px solid #333;
   background: red;
 }
+.admin_bar{
+  float: left;
+}
+.logged_in{
+  float: right;
+}
+
+
 /*global navi*/
 .gnav--05{
   width: 100%;
@@ -99,6 +107,20 @@ table td{
   border: 1px solid #333;
   border-collapse: collapse;
 }
+.pager{
+  text-align: center;
+}
+.pager a,
+.pager strong{
+  font-size:  1.2em;
+  font-weight: ;
+  padding: 10px;
+}
+.pager a:hover{
+  color: #;
+  text-decoration: none;
+}
+
 
 
 .l-sidebar{

@@ -10,3 +10,13 @@
 .single_post_date{
   text-align: right;
 }
+
+/*gallery.php*/
+.thumb{
+  margin-bottom: 3px;
+}
+.thumb a,
+.thumb img{
+  display: inline-block;
+  margin-bottom: 3px;
+}
