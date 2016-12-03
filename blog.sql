@@ -7,7 +7,16 @@ CREATE TABLE user(
   user_email varchar(120) not null unique,
   user_date datetime not null DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY(user_id)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE TABLE temp_user(
+  user_id int(6) not null auto_increment,
+  user_email varchar(120) not null unique,
+  user_pass varchar(60) not null,
+  key varchar(255) not null,
+  user_date datetime not null DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY(user_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE post(
   post_id int(6) not null auto_increment,
@@ -20,7 +29,7 @@ CREATE TABLE post(
   cat_id int(6) not null DEFAULT 0,
   user_id int(6),
   PRIMARY KEY(post_id)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE category(
   cat_id int(6) not null auto_increment,
@@ -28,7 +37,7 @@ CREATE TABLE category(
   cat_slug varchar(100) not null unique,
   cat_date datetime not null DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY(cat_id)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 create table post_category(
   post_category_id int(6) auto_increment,
@@ -39,7 +48,7 @@ create table post_category(
 
 
 /*---user---*/
-INSERT INTO user(user_name,user_pass,user_email,user_date) VALUES("zaku","zakudesu","zaku@gmail.comm",now());
+INSERT INTO user(user_name,user_pass,user_email,user_date) VALUES("zaza","zazaza","zaza@gmail.comm",now());
 /*---post---*/
 INSERT INTO post(post_title,post_content) VALUES("タイトル１","本文２");
 INSERT INTO post(post_title,post_content) VALUES("タイトル2","本文2");
