@@ -3,14 +3,14 @@
       <?php echo validation_errors(); ?>
       <?php echo form_open('admin/admin_category_edit/'.$cat['cat_id']) ?>
 
-      <label for="cat_name">カテゴリ名</label>
-      <p><input type="input" name="cat_name" id="cat_name" placeholder="例： ブログ" value="<?php echo $cat['cat_name'] ?>"></p>
+        <label for="cat_name">カテゴリ名</label>
+        <p><input type="input" name="cat_name" id="cat_name" placeholder="例： ブログ" value="<?php echo $cat['cat_name'] ?>"></p>
 
-      <label for="cat_slug">スラッグ</label>
-      <p><input name="cat_slug" id="cat_slug" placeholder="例： blog" value="<?php echo $cat['cat_slug'] ?>"></input></p>
+        <label for="cat_slug">スラッグ</label>
+        <p><input name="cat_slug" id="cat_slug" placeholder="例： blog" value="<?php echo $cat['cat_slug'] ?>"></input></p>
 
-      <input type="submit" name="submit" value="投稿">
-      <?php echo $cat['cat_id'] ?>
+        <input type="submit" name="submit" value="投稿">
+        <?php echo $cat['cat_id'] ?>
 
       </form>
 
