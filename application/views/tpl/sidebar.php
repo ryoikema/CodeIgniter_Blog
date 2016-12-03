@@ -1,5 +1,9 @@
 <div class="l-sidebar">
 
+  <div class="popular_post">
+    <h3>人気の記事５件</h3>
+  </div>
+
   <div class="category_list">
     <h3>カテゴリー</h3>
       <ul>
@@ -20,12 +24,8 @@
   </div>
 
   <div class="calender">
-    <h3><a href="<?php echo site_url('calender'); ?>">カレンダー</a></h3>
+    <h3>カレンダー</h3>
       <?php echo $calender; ?>
-  </div>
-
-  <div class="popular_post">
-    <h3>人気の記事５件</h3>
   </div>
 
 </div><!--/l-sidebar-->
