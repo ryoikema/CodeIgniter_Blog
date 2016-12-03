@@ -13,19 +13,21 @@ class Blog_model extends CI_Model{
       SELECT *
       ,date_format(post_date,'%Y年%m月%d日') AS post_date
       FROM post
-      ORDER BY post_id
-      DESC limit 5");
+      ORDER BY post_id DESC
+      limit 5");
     return $query->result_array();
   }
 
-
   //一覧記事用(post_list)
   public function get_post_list(){
-    $query = $this->db->query("
-      SELECT *
-      ,date_format(post_date,'%Y年%m月%d日') AS post_date
-      FROM post
-      ORDER BY post_id DESC");
+    if(empty($_GET['per_page'])){
+      $_GET['per_page'] = 0;
+    }
+    $query=
+      $this->db
+      ->select("*,date_format(post_date,'%Y年%m月%d日') AS post_date")
+      ->order_by("post_date DESC")
+      ->get("post", 10, $_GET['per_page']);//表示件数はControllerと合わせる
     return $query->result_array();
   }
 
@@ -42,12 +44,18 @@ class Blog_model extends CI_Model{
 
   //月別記事
   public function get_post_archive(){
-    $post_date = $this->input->get('post_date');
-    $query = $this->db->query("
-      SELECT *
-      ,date_format(post_date,'%Y年%m月%d日') AS post_date
-      FROM post
-      WHERE date_format(post_date,'%Y-%m')='".$post_date."'");
+    $post_date = $this->input->get('post_date');//x年x月を$_GET
+
+    if(empty($_GET['per_page'])){
+      $_GET['per_page'] = 0;
+    }
+    $query=
+      $this->db
+      ->select("*,date_format(post_date,'%Y年%m月%d日') AS post_date")
+      ->where("date_format(post_date,'%Y-%m')='".$post_date."'")
+      ->order_by("post_date DESC")
+      ->get("post", 2, $_GET['per_page']);//表示件数はControllerと合わせる
+
     return $query->result_array();
   }
 
@@ -63,7 +71,6 @@ class Blog_model extends CI_Model{
       ORDER BY post_id DESC");
     return $query->result_array();
   }
-
 /*************************************************
  投稿とカテゴリ
  ・投稿に紐づいたカテゴリの取得 (記事表示用)
@@ -81,14 +88,18 @@ class Blog_model extends CI_Model{
   //カテゴリに紐づいた記事を取得 (記事表示用)
   public function get_post_category(){
     $cat_slug = $this->input->get("cat_slug");
-    $query = $this->db->query("
-      SELECT *, date_format(post_date,'%Y年%m月%d日') AS post_date
-      FROM post_category
-      inner join category on(post_category.cat_id=category.cat_id)
-      inner join post on(post.post_id=post_category.post_id)
-      WHERE cat_slug='".$cat_slug."'");
-
-     return $query->result_array();
+    if(empty($_GET['per_page'])){
+      $_GET['per_page'] = 0;
+    }
+    $query=
+      $this->db
+      ->select("*,date_format(post_date,'%Y年%m月%d日') AS post_date")
+      ->join('category', 'post_category.cat_id=category.cat_id')
+      ->join('post', 'post.post_id=post_category.post_id')
+      ->where("cat_slug='".$cat_slug."'")
+      ->order_by("post_date DESC")
+      ->get("post_category", 2, $_GET['per_page']);//表示件数はControllerと合わせる
+    return $query->result_array();
    }
 /*************************************************
  カテゴリ

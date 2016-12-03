@@ -13,15 +13,17 @@ class Admin_model extends CI_Model{
 **************************************************/
   //トップページ用
   public function admin_get_post_list($post_id = FALSE){
-    $query = $this->db->query("
-      SELECT *
-      ,date_format(post_date,'%Y年%m月%d日') AS post_date
-      FROM post
-      ORDER BY post_id
-      DESC");
+    //ページャー
+    if(empty($_GET['per_page'])){
+      $_GET['per_page'] = 0;
+    }
+    $query=
+      $this->db
+      ->select("*,date_format(post_date,'%Y年%m月%d日') AS post_date")
+      ->order_by("post_id DESC")
+      ->get("post", 20, $_GET['per_page']);//表示件数はControllerと合わせる
     return $query->result_array();
   }
-
 
   //記事詳細用
   public function admin_get_post($post_id = FALSE){
@@ -120,15 +122,20 @@ class Admin_model extends CI_Model{
 
   //カテゴリに紐づいた記事を取得 (記事表示用)
   public function get_post_category(){
+    //ページャー
     $cat_slug = $this->input->get("cat_slug");
-    $query = $this->db->query("
-      SELECT *, date_format(post_date,'%Y年%m月%d日') AS post_date
-      FROM post_category
-      inner join category on(post_category.cat_id=category.cat_id)
-      inner join post on(post.post_id=post_category.post_id)
-      WHERE cat_slug='".$cat_slug."'");
-
-     return $query->result_array();
+    if(empty($_GET['per_page'])){
+      $_GET['per_page'] = 0;
+    }
+    $query=
+      $this->db
+      ->select("*,date_format(post_date,'%Y年%m月%d日') AS post_date")
+      ->join('category', 'post_category.cat_id=category.cat_id')
+      ->join('post', 'post.post_id=post_category.post_id')
+      ->where("cat_slug='".$cat_slug."'")
+      ->order_by("post_date DESC")
+      ->get("post_category", 20, $_GET['per_page']);//表示件数はControllerと合わせる
+    return $query->result_array();
    }
 
   //カテゴリ取得 （カテゴリ編集用）
