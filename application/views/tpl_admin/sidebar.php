@@ -13,8 +13,7 @@
     <div class="admin_post_list">
       <h3>画像管理</h3>
       <ul>
-        <li><a href="">画像アップロード</a></li>
-        <li><a href="">メディア</a></li>
+        <li><a href="<?php echo site_url('admin/upload'); ?>">画像アップロード</a></li>
       </ul>
     </div>
   </div><!--/l-sidebar-->
